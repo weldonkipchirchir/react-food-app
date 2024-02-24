@@ -2,7 +2,7 @@ import styles from "./fooddetail.module.css";
 import { useEffect, useState } from "react";
 export default function FoodDetail({ foodId }) {
   const URL = `https://api.spoonacular.com/recipes/${foodId}/information`;
-  const API_KEY = import.meta.env.REACT_APP_API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const [foodDetails, setFoodDetails] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ export default function FoodDetail({ foodId }) {
   useEffect(() => {
     async function fetchFood() {
       try {
-        const response = await fetch(`${URL}?apiKey=${API_KEY}`);
+        const response = await fetch(`${URL}?apiKey=${apiKey}`);;
         const data = await response.json();
         setFoodDetails(data);
       } catch (error) {
